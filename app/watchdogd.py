@@ -4,7 +4,7 @@ import traceback
 from pprint import pprint
 
 import call_rest_api
-
+import get_env
 
 def check_aercus_serial_connected():
     try:
@@ -15,7 +15,7 @@ def check_aercus_serial_connected():
         # pprint(response_dict)
 
         if response_dict['DataStopped'] == True:
-            print('Error : Alert : Aercus base station serial connection is not connected to CumulusMX')
+            print('Error : Alert : Aercus base station USB serial connection is not connected to CumulusMX')
             alert = True
 
         if response_dict['AlarmBattery'] == True:
@@ -37,14 +37,17 @@ def check_aercus_serial_connected():
             return True
 
     except Exception as e:
-        print('Error : unable to communicate with CumulusMX API')
+        print('Error : Alert : Unable to communicate with CumulusMX API')
         return False
 
 
 def main():
+    version = get_env.get_version()
+    poll_secs = get_env.get_poll_secs()
+
     beepy.beep(sound=2)         # run a sound when this daemon starts up
     time.sleep(2)
-    print('watchdogd started')
+    print('watchdogd started, version=' + version)
 
     while True:
         aercus_connected = check_aercus_serial_connected()
@@ -57,7 +60,7 @@ def main():
             time.sleep(0.5)
             beepy.beep(sound=1)
 
-        time.sleep(60)
+        time.sleep(poll_secs)           # typically 60 seconds
 
 
 if __name__ == '__main__':
