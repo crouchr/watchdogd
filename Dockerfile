@@ -26,4 +26,4 @@ WORKDIR /app
 
 # run Python unbuffered so the logs are flushed
 CMD ["python3", "-u", "watchdogd.py"]
-#CMD ["tail", "-f", "/dev/null"]
+

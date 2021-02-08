@@ -12,7 +12,7 @@ def check_aercus_serial_connected():
 
         endpoint = 'http://192.168.1.180:8998/api/data/currentdata'
         status_code, response_dict = call_rest_api.call_rest_api(endpoint)
-        pprint(response_dict)
+        # pprint(response_dict)
 
         if response_dict['DataStopped'] == True:
             print('Error : Alert : Aercus base station serial connection is not connected to CumulusMX')
@@ -33,7 +33,7 @@ def check_aercus_serial_connected():
         if alert:
             return False
         else:
-            print('Aercus base station / sensor OK')
+            # print('Aercus base station / sensor OK')
             return True
 
     except Exception as e:
@@ -57,7 +57,7 @@ def main():
             time.sleep(0.5)
             beepy.beep(sound=1)
 
-        time.sleep(10)
+        time.sleep(60)
 
 
 if __name__ == '__main__':
