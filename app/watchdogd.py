@@ -1,10 +1,17 @@
 import time
 import beepy
-import traceback
-from pprint import pprint
+
+# split this into another watchdog
+# watchdog_minor and watchdog_major
+# major = will impact collecting data
+# minor = other alerts - e.g. upgrade
+# major and minor to use different alert sounds
+# to stop sounds just temporary kill the container
+# major = also detect of cumulusmx REST API is not working
 
 import call_rest_api
 import get_env
+
 
 def check_aercus_serial_connected():
     try:
@@ -26,9 +33,10 @@ def check_aercus_serial_connected():
             print('Error : Alert : Aercus base station battery alarm')
             alert = True
 
-        if response_dict['AlarmUpgrade'] == True:
-            print('Error : Alert : CumulusMX software upgrade is available')
-            alert = True
+        # move this into another daemon
+        # if response_dict['AlarmUpgrade'] == True:
+        #     print('Error : Alert : CumulusMX software upgrade is available')
+        #     alert = True
 
         if alert:
             return False
