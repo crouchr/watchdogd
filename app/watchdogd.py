@@ -9,7 +9,10 @@ import beepy
 # to stop sounds just temporary kill the container
 # major = also detect of cumulusmx REST API is not working
 
-import call_rest_api
+# artifacts
+import cumulus_comms
+
+# imports
 import get_env
 
 
@@ -18,7 +21,7 @@ def check_aercus_serial_connected():
         alert = False
 
         endpoint = 'http://192.168.1.180:8998/api/data/currentdata'
-        status_code, response_dict = call_rest_api.call_rest_api(endpoint)
+        status_code, response_dict = cumulus_comms.call_rest_api.call_rest_api(endpoint)
         # pprint(response_dict)
 
         if response_dict['DataStopped'] == True:

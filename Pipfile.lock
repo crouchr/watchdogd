@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9ed15f8b60cb84033b453a002f7333e089e87c01ffca525665b6ea2b36cfb0d0"
+            "sha256": "d0e93bf1e86714580a5cbe52f13be47ed21eb0cd73b2c393bd07ce98ee1ffcc2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -12,6 +12,11 @@
                 "name": "pypi",
                 "url": "https://pypi.org/simple",
                 "verify_ssl": true
+            },
+            {
+                "name": "ermin",
+                "url": "http://192.168.1.102/python-packages",
+                "verify_ssl": false
             }
         ]
     },
@@ -46,6 +51,14 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.10"
+        },
+        "metrestapi": {
+            "hashes": [
+                "sha256:2aec3978c928fde168fb12f5cafc2bfe3df0e6db6805890f017a00cf1b968863",
+                "sha256:81826aea457a40047368a1f9e73718856317f70b04a793659d16a8846b87cd5c"
+            ],
+            "index": "ermin",
+            "version": "==1.0.5"
         },
         "requests": {
             "hashes": [
