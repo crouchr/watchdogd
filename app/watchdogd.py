@@ -21,7 +21,7 @@ def check_aercus_serial_connected():
         alert = False
 
         endpoint = 'http://192.168.1.180:8998/api/data/currentdata'
-        status_code, response_dict = cumulus_comms.call_rest_api.call_rest_api(endpoint)
+        status_code, response_dict = cumulus_comms.call_rest_api(endpoint, query=None)
         # pprint(response_dict)
 
         if response_dict['DataStopped'] == True:
@@ -62,8 +62,8 @@ def main():
 
     while True:
         aercus_connected = check_aercus_serial_connected()
-        if not aercus_connected:
 
+        if not aercus_connected:
             # make some noise
             beepy.beep(sound=1)
             time.sleep(0.5)
