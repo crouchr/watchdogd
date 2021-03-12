@@ -20,7 +20,7 @@ def check_aercus_serial_connected():
     try:
         alert = False
 
-        endpoint = 'http://cumulusmx:8998/api/data/currentdata'
+        endpoint = 'http://192.168.1.12:8998/api/data/currentdata'
         status_code, response_dict = cumulus_comms.call_rest_api(endpoint, query=None)
         # pprint(response_dict)
 
